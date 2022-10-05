@@ -12,7 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.felipegoncalves.almoxlog.entities.enums.EntidadeStatus;
 
 @Entity
 @Table(name = "tb_pessoa")
@@ -25,7 +24,6 @@ public class Pessoa implements Serializable {
 	private Long id;
 	private String nome;
 	private String sobrenome;
-	private Integer status;
 
 	@JsonIgnore
 	@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
@@ -35,13 +33,11 @@ public class Pessoa implements Serializable {
 
 	}
 
-	public Pessoa(Long id, String nome, String sobrenome, EntidadeStatus status) {
+	public Pessoa(Long id, String nome, String sobrenome) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
-		this.setStatus(status);
-		;
 	}
 
 	public Long getId() {
@@ -74,18 +70,6 @@ public class Pessoa implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public EntidadeStatus getStatus() {
-		return EntidadeStatus.valueOf(status);
-	}
-
-	public void setStatus(EntidadeStatus entidadeStatus) {
-
-		if (entidadeStatus != null) {
-			this.status = entidadeStatus.getCode();
-		}
-
 	}
 
 	@Override

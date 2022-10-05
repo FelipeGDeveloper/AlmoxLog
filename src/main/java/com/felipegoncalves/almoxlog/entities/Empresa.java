@@ -25,16 +25,15 @@ public class Empresa implements Serializable {
 	private Long id;
 	private String nome;
 	private String abreviatura;
-	private Integer status;
 
 	@JsonIgnore
 	@OneToOne(mappedBy = "empresa", cascade = CascadeType.ALL)
 	private Fornecedor fornecedor;
-	
+
 	@JsonIgnore
 	@OneToOne(mappedBy = "empresa", cascade = CascadeType.ALL)
 	private Cliente cliente;
-	
+
 	@JsonIgnore
 	@OneToOne(mappedBy = "empresa", cascade = CascadeType.ALL)
 	private Transportadora transportadora;
@@ -43,12 +42,11 @@ public class Empresa implements Serializable {
 		super();
 	}
 
-	public Empresa(Long id, String nome, String abreviatura, EntidadeStatus status) {
+	public Empresa(Long id, String nome, String abreviatura) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.abreviatura = abreviatura;
-		this.setStatus(status);
 	}
 
 	public Long getId() {
@@ -97,18 +95,6 @@ public class Empresa implements Serializable {
 
 	public void setTransportadora(Transportadora transportadora) {
 		this.transportadora = transportadora;
-	}
-
-	public EntidadeStatus getStatus() {
-		return EntidadeStatus.valueOf(status);
-	}
-
-	public void setStatus(EntidadeStatus entidadeStatus) {
-
-		if (entidadeStatus != null) {
-			this.status = entidadeStatus.getCode();
-		}
-
 	}
 
 	@Override

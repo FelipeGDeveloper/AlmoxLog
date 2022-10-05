@@ -11,8 +11,6 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.felipegoncalves.almoxlog.entities.enums.EntidadeStatus;
-
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario implements Serializable {
@@ -29,19 +27,16 @@ public class Usuario implements Serializable {
 	@MapsId
 	private Pessoa pessoa;
 
-	private Integer status;
-
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(Long id, String login, String senha, Pessoa pessoa, EntidadeStatus status) {
+	public Usuario(Long id, String login, String senha, Pessoa pessoa) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.senha = senha;
 		this.pessoa = pessoa;
-		this.setStatus(status);
 	}
 
 	public Long getId() {
@@ -74,18 +69,6 @@ public class Usuario implements Serializable {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
-	}
-
-	public EntidadeStatus getStatus() {
-		return EntidadeStatus.valueOf(status);
-	}
-
-	public void setStatus(EntidadeStatus entidadeStatus) {
-
-		if (entidadeStatus != null) {
-			this.status = entidadeStatus.getCode();
-		}
-
 	}
 
 	@Override

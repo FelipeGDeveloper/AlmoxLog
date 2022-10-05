@@ -25,8 +25,7 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
-	private Integer status;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "produto")
 	private List<Lote> lotes = new ArrayList<>();
@@ -35,11 +34,10 @@ public class Produto implements Serializable {
 		super();
 	}
 
-	public Produto(Long id, String descricao, EntidadeStatus status) {
+	public Produto(Long id, String descricao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
-		this.setStatus(status);
 	}
 
 	public Long getId() {
@@ -60,18 +58,6 @@ public class Produto implements Serializable {
 
 	public List<Lote> getLotes() {
 		return lotes;
-	}
-
-	public EntidadeStatus getStatus() {
-		return EntidadeStatus.valueOf(status);
-	}
-
-	public void setStatus(EntidadeStatus entidadeStatus) {
-
-		if (entidadeStatus != null) {
-			this.status = entidadeStatus.getCode();
-		}
-
 	}
 
 	@Override

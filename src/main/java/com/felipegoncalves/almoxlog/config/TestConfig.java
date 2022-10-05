@@ -22,7 +22,6 @@ import com.felipegoncalves.almoxlog.entities.Saida;
 import com.felipegoncalves.almoxlog.entities.SaidaItem;
 import com.felipegoncalves.almoxlog.entities.Transportadora;
 import com.felipegoncalves.almoxlog.entities.Usuario;
-import com.felipegoncalves.almoxlog.entities.enums.EntidadeStatus;
 import com.felipegoncalves.almoxlog.repositories.CategoriaSaidaRepository;
 import com.felipegoncalves.almoxlog.repositories.ClienteRepository;
 import com.felipegoncalves.almoxlog.repositories.EntradaItemRepository;
@@ -75,17 +74,17 @@ public class TestConfig implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Pessoa p1 = new Pessoa(null, "Maria", "Silva", EntidadeStatus.ATIVO);
-		Pessoa p2 = new Pessoa(null, "José", "Silva", EntidadeStatus.ATIVO);
+		Pessoa p1 = new Pessoa(null, "Maria", "Silva");
+		Pessoa p2 = new Pessoa(null, "José", "Silva");
 
-		Usuario u1 = new Usuario(null, p1.getNome(), "1234", p1, EntidadeStatus.ATIVO);
-		Usuario u2 = new Usuario(null, p2.getNome(), "1234", p2, EntidadeStatus.ATIVO);
+		Usuario u1 = new Usuario(null, p1.getNome(), "1234", p1);
+		Usuario u2 = new Usuario(null, p2.getNome(), "1234", p2);
 
 		usuarioRepository.saveAll(Arrays.asList(u1, u2));
 
-		Produto pr1 = new Produto(null, "DEXAMETASONA", EntidadeStatus.ATIVO);
-		Produto pr2 = new Produto(null, "MICONAZOL POMADA", EntidadeStatus.ATIVO);
-		Produto pr3 = new Produto(null, "NEOMICINA + BACITRACINA", EntidadeStatus.ATIVO);
+		Produto pr1 = new Produto(null, "DEXAMETASONA");
+		Produto pr2 = new Produto(null, "MICONAZOL POMADA");
+		Produto pr3 = new Produto(null, "NEOMICINA + BACITRACINA");
 
 		produtoRepository.saveAll(Arrays.asList(pr1, pr2, pr3));
 
@@ -100,7 +99,7 @@ public class TestConfig implements CommandLineRunner {
 
 		loteRepository.saveAll(Arrays.asList(l1, l2, l3));
 
-		Empresa e2 = new Empresa(null, "Fornecedor1", "Fr1", EntidadeStatus.ATIVO);
+		Empresa e2 = new Empresa(null, "Fornecedor1", "Fr1");
 		Fornecedor fr1 = new Fornecedor(null, e2);
 
 		fornecedorRepository.save(fr1);
@@ -115,12 +114,12 @@ public class TestConfig implements CommandLineRunner {
 
 		entradaItemRepository.saveAll(Arrays.asList(ei1, ei2, ei3));
 
-		Empresa e1 = new Empresa(null, "Cliente1", "Cl1", EntidadeStatus.ATIVO);
+		Empresa e1 = new Empresa(null, "Cliente1", "Cl1");
 		Cliente c1 = new Cliente(null, e1);
 
 		clienteRepository.save(c1);
 
-		Empresa e3 = new Empresa(null, "Transportadora1", "Tr1", EntidadeStatus.ATIVO);
+		Empresa e3 = new Empresa(null, "Transportadora1", "Tr1");
 		Transportadora t1 = new Transportadora(null, e3);
 
 		transportadoraRepository.save(t1);
