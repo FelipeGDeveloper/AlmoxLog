@@ -82,9 +82,9 @@ public class TestConfig implements CommandLineRunner {
 
 		usuarioRepository.saveAll(Arrays.asList(u1, u2));
 
-		Produto pr1 = new Produto(null, "DEXAMETASONA");
-		Produto pr2 = new Produto(null, "MICONAZOL POMADA");
-		Produto pr3 = new Produto(null, "NEOMICINA + BACITRACINA");
+		Produto pr1 = new Produto(null, "Produto 01");
+		Produto pr2 = new Produto(null, "Produto 02");
+		Produto pr3 = new Produto(null, "Produto 03");
 
 		produtoRepository.saveAll(Arrays.asList(pr1, pr2, pr3));
 
@@ -139,7 +139,5 @@ public class TestConfig implements CommandLineRunner {
 		SaidaItem si3 = new SaidaItem(l3, saida1, 194, 3.23);
 
 		saidaItemRepository.saveAll(Arrays.asList(si1, si2, si3));
-
 	}
-
 }

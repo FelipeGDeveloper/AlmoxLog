@@ -160,5 +160,4 @@ public class Saida implements Serializable {
 		Saida other = (Saida) obj;
 		return Objects.equals(id, other.id);
 	}
-
 }
